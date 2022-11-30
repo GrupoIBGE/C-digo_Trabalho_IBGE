@@ -1,0 +1,117 @@
+install.packages("sidrar")
+
+library(sidrar)
+
+get_sidra(api = "/t/1613/n1/all/v/215,2313/p/last%203/c82/0,2720,2723,2733")
+
+
+install.packages("dplyr")
+
+library(dplyr)
+
+tabela <- get_sidra(api = "/t/1613/n1/all/v/215,2313/p/last%203/c82/0,2720,2723,2733")
+
+View(tabela)
+
+
+## BANANA 
+
+
+tabela_banana <- tabela %>%filter(`Produto das lavouras permanentes` == "Banana (cacho)")
+
+View(tabela_banana)
+
+tabela_valor_produção_banana <- tabela_banana %>% 
+  filter(`Variável` == "Valor da produção")
+
+View(tabela_valor_produção_banana)
+
+
+tabela_media <- summarise(tabela_valor_produção_banana, median(Valor))
+
+View(tabela_media)
+
+tabela_soma <- summarise(tabela_valor_produção_banana, sum(Valor))
+
+View(tabela_soma)
+
+tabela_area_colheita_banana <- tabela_banana %>% 
+  filter(`Variável` == "Área destinada à colheita")
+
+View(tabela_area_colheita_banana)
+
+tabela_media_area_colheita <- summarise(tabela_area_colheita_banana, median(Valor))
+
+View(tabela_media_area_colheita)
+
+tabela_soma_area_colheita <- summarise(tabela_area_colheita_banana, sum(Valor))
+
+View(tabela_soma_area_colheita)
+
+## CAFÉ
+
+
+tabela_café <- tabela %>%filter(`Produto das lavouras permanentes` == "Café (em grão) Total")
+
+View(tabela_café)
+
+tabela_valor_produção_café <- tabela_café %>% 
+  filter(`Variável` == "Valor da produção")
+
+View(tabela_valor_produção_café)
+
+
+tabela_media <- summarise(tabela_valor_produção_café, median(Valor))
+
+View(tabela_media)
+
+tabela_soma <- summarise(tabela_valor_produção_café, sum(Valor))
+
+View(tabela_soma)
+
+tabela_area_colheita_café <- tabela_café %>% 
+  filter(`Variável` == "Área destinada à colheita")
+
+View(tabela_area_colheita_café)
+
+tabela_media_area_colheita <- summarise(tabela_area_colheita_café, median(Valor))
+
+View(tabela_media_area_colheita)
+
+tabela_soma_area_colheita <- summarise(tabela_area_colheita_café, sum(Valor))
+
+View(tabela_soma_area_colheita)
+
+## LARANJA 
+
+
+tabela_laranja <- tabela %>%filter(`Produto das lavouras permanentes` == "Laranja")
+
+View(tabela_laranja)
+
+tabela_valor_produção_laranja <- tabela_laranja %>% 
+  filter(`Variável` == "Valor da produção")
+
+View(tabela_valor_produção_laranja)
+
+
+tabela_media <- summarise(tabela_valor_produção_laranja, median(Valor))
+
+View(tabela_media)
+
+tabela_soma <- summarise(tabela_valor_produção_laranja, sum(Valor))
+
+View(tabela_soma)
+
+tabela_area_colheita_laranja <- tabela_laranja %>% 
+  filter(`Variável` == "Área destinada à colheita")
+
+View(tabela_area_colheita_laranja)
+
+tabela_media_area_colheita <- summarise(tabela_area_colheita_laranja, median(Valor))
+
+View(tabela_media_area_colheita)
+
+tabela_soma_area_colheita <- summarise(tabela_area_colheita_laranja, sum(Valor))
+
+View(tabela_soma_area_colheita)
